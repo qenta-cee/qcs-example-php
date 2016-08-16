@@ -51,6 +51,7 @@ $_SESSION["currency"] = "EUR";
                 <select name="paymentType" onchange="toggleFinancialInstitutions(this)">
                     <option value="BANCONTACT_MISTERCASH">Bancontact/MisterCash</option>
                     <option value="CCARD" selected>Credit Card</option>
+                    <option value="CCARD-MOTO">Credit Card - Mail or Telephone Order</option>
                     <option value="EKONTO">eKonto</option>
                     <option value="SEPA-DD">SEPA Direct Debit</option>
                     <option value="EPS">eps-&Uuml;berweisung</option>
