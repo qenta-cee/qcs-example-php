@@ -1,0 +1,11 @@
+.fieldrow-newline {
+    clear: both;
+}
+
+#cvc {
+    width: 80px;
+}
+
+#issueNumber {
+    width: 60px;
+}

@@ -1,0 +1,146 @@
+
+body, button, input, select, table, textarea {
+    color: #636363;
+    font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.fieldlabel {
+    font-size: 12px;
+    font-weight: 600;
+    width: 200px;
+    color: #636363;
+}
+
+.fieldrow {
+    margin-top: 5px;
+}
+
+/* label and input on separate rows */
+.fieldrow-newline {
+    clear: both;
+}
+
+input {
+    width: 200px;
+    height: 22px;
+    background: none repeat scroll 0 0 #ffffff;
+    border: 1px solid silver;
+    border-radius: 2px;
+    font-size: 12px;
+}
+
+select {
+    height: 22px;
+    background: none repeat scroll 0 0 #ffffff;
+    border: 1px solid silver;
+    border-radius: 2px;
+    font-size: 12px;
+}
+
+#cvc {
+    width: 80px;
+}
+
+#issueNumber {
+    width: 60px;
+}
+
+/* input type=text */
+.fieldtext {
+}
+
+/* select */
+.fieldselect {
+}
+
+/* area for parameter related info/error messages */
+.infobox {
+}
+
+/* area for non parameter related messages */
+#messagebox {
+}
+
+/* denotes required field, i.e. PAN and Expiry */
+.required {
+}
+
+/* new row */
+.clearer {
+}
+
+/* cardholder row */
+#row-cardholder {
+}
+
+#label_cardholder {
+}
+
+/* input */
+#cardholder {
+}
+
+/* pan row */
+#row-pan {
+}
+
+#label_pan {
+}
+
+/* input */
+#pan {
+}
+
+/* expiry row */
+#row-expiry {
+}
+
+#label_expiryMonth {
+}
+
+#expiryMonth {
+}
+
+#label_expiryYear {
+}
+
+#expiryYear {
+}
+
+/* CVC row */
+#row-cvc {
+}
+
+#label_cvc {
+}
+
+#cvc {
+}
+
+/* issue date */
+#row-issuedate {
+}
+
+#label_issueMonth {
+}
+
+#issueMonth {
+}
+
+#label_issueYear {
+}
+
+#issueYear {
+}
+
+/* issue number */
+#row-issueNumber {
+}
+
+#label_issueNumber {
+}
+
+#issueNumber {
+}

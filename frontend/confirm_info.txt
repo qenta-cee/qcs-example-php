@@ -1,0 +1,8 @@
+2016-04-26 10:15:02 There occured an error during the payment transaction.
+
+The Wirecard Checkout Seamless returned the following parameters:
+error_1_errorCode = 99996
+error_1_message = QPAY-Session timed out after 30 minutes without activity.
+error_1_consumerMessage = QPAY-Session timed out after 30 minutes without activity.
+errors = 1
+paymentState = FAILURE
