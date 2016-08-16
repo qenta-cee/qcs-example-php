@@ -186,6 +186,38 @@ foreach (explode('&', $curlResult) as $keyvalue) {
             var dataStorage = new WirecardCEE_DataStorage();
             // initializes the JavaScript object containing the payment specific information and data
             var paymentInformation = {};
+            if (aPaymentType == "Maestro") {
+                if (!document.getElementById('maestro_pan')) {
+                    dataStorage.storeMaestroInformation(null, callbackFunction);
+                } else {
+                    paymentInformation.pan = document.getElementById('maestro_pan').value;
+                    paymentInformation.expirationMonth = document.getElementById('maestro_expirationMonth').value;
+                    paymentInformation.expirationYear = document.getElementById('maestro_expirationYear').value;
+                    paymentInformation.cardholdername = document.getElementById('maestro_cardholdername').value;
+                    paymentInformation.cardverifycode = document.getElementById('maestro_cardverifycode').value;
+                    paymentInformation.issueMonth = document.getElementById('maestro_issueMonth').value;
+                    paymentInformation.issueYear = document.getElementById('maestro_issueYear').value;
+                    paymentInformation.issueNumber = document.getElementById('maestro_issueNumber').value;
+                    // stores sensitive data to the Wirecard data storage
+                    dataStorage.storeMaestroInformation(paymentInformation, callbackFunction);
+                }
+            }
+            if (aPaymentType == "CreditCardMoto") {
+                if (!document.getElementById('cc_moto_pan')) {
+                    dataStorage.storeCreditCardMotoInformation(null, callbackFunction);
+                } else {
+                    paymentInformation.pan = document.getElementById('cc_moto_pan').value;
+                    paymentInformation.expirationMonth = document.getElementById('cc_moto_expirationMonth').value;
+                    paymentInformation.expirationYear = document.getElementById('cc_moto_expirationYear').value;
+                    paymentInformation.cardholdername = document.getElementById('cc_moto_cardholdername').value;
+                    paymentInformation.cardverifycode = document.getElementById('cc_moto_cardverifycode').value;
+                    paymentInformation.issueMonth = document.getElementById('cc_moto_issueMonth').value;
+                    paymentInformation.issueYear = document.getElementById('cc_moto_issueYear').value;
+                    paymentInformation.issueNumber = document.getElementById('cc_moto_issueNumber').value;
+                    // stores sensitive data to the Wirecard data storage
+                    dataStorage.storeCreditCardMotoInformation(paymentInformation, callbackFunction);
+                }
+            }
             if (aPaymentType == "CreditCard") {
                 if (!document.getElementById('cc_pan')) {
                     dataStorage.storeCreditCardInformation(null, callbackFunction);
@@ -237,7 +269,7 @@ foreach (explode('&', $curlResult) as $keyvalue) {
             if (aResponse.getStatus() == 0) {
                 // saves all anonymized payment information to a JavaScript object
                 var info = aResponse.getAnonymizedPaymentInformation();
-                if (paymentType == "CreditCard") {
+                if (paymentType == "CreditCard" || paymentType == "CreditCardMoto" || paymentType == "Maestro") {
                     s += "anonymousPan: " + info.anonymousPan + "\n";
                     s += "maskedPan: " + info.maskedPan + "\n";
                     s += "financialInstitution: " + info.financialInstitution + "\n";
@@ -410,6 +442,120 @@ foreach (explode('&', $curlResult) as $keyvalue) {
                 <i>The HTML containing the input fields for sensitive credit card data is hosted at Wirecard.
                     Based on Javascript the consumer input is immediately send to Wirecard, validated and stored in the data storage,
                     therefore no button for storing this credit card data is required.</i>
+            </td>
+        </tr>
+    <?php } ?>
+    <tr>
+        <td colspan="2" align="center"><b>CreditCardMoto</b></td>
+    </tr>
+    <?php if (!$PCI3_DSS_SAQ_A_ENABLE) { ?>
+        <tr>
+            <td align="right"><b>pan</b></td>
+            <td><input type="text" value="9500000000000001" id="cc_moto_pan"></td>
+        </tr>
+        <tr>
+            <td align="right"><b>expirationMonth</b></td>
+            <td><input type="text" value="12" id="cc_moto_expirationMonth"></td>
+        </tr>
+        <tr>
+            <td align="right"><b>expirationYear</b></td>
+            <td><input type="text" value="2031" id="cc_moto_expirationYear"></td>
+        </tr>
+        <tr>
+            <td align="right"><b>cardverifycode</b></td>
+            <td><input type="text" value="123" id="cc_moto_cardverifycode"></td>
+        </tr>
+        <tr>
+            <td align="right"><b>cardholdername</b></td>
+            <td><input type="text" value="Jane Doe" id="cc_moto_cardholdername"></td>
+        </tr>
+        <tr>
+            <td align="right"><b>issueMonth</b></td>
+            <td><input type="text" value="01" id="cc_moto_issueMonth"></td>
+        </tr>
+        <tr>
+            <td align="right"><b>issueYear</b></td>
+            <td><input type="text" value="2013" id="cc_moto_issueYear"></td>
+        </tr>
+        <tr>
+            <td align="right"><b>issueNumber</b></td>
+            <td><input type="text" value="1234" id="cc_moto_issueNumber"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right"><input type="button" value="Store CreditCardMoto data" onClick="storeData('CreditCardMoto');"></td>
+        </tr>
+    <?php } else { ?>
+        <tr>
+            <td colspan="2">
+                <div id="creditcardmotoDataIframe"></div>
+            </td>
+        </tr>
+        <script type="text/javascript">
+            var wd = new WirecardCEE_DataStorage();
+            wd.buildIframeCreditCardMoto('creditcardmotoDataIframe', '100%', '200px');
+        </script>
+        <tr>
+            <td colspan="2">
+                <i>The HTML containing the input fields for sensitive credit card data is hosted at Wirecard.
+                    Based on Javascript the consumer input is immediately send to Wirecard, validated and stored in the data storage,
+                    therefore no button for storing this credit card data is required.</i>
+            </td>
+        </tr>
+    <?php } ?>
+    <tr>
+        <td colspan="2" align="center"><b>Maestro SecureCode</b></td>
+    </tr>
+    <?php if (!$PCI3_DSS_SAQ_A_ENABLE) { ?>
+        <tr>
+            <td align="right"><b>pan</b></td>
+            <td><input type="text" value="9500000000000001" id="maestro_pan"></td>
+        </tr>
+        <tr>
+            <td align="right"><b>expirationMonth</b></td>
+            <td><input type="text" value="12" id="maestro_expirationMonth"></td>
+        </tr>
+        <tr>
+            <td align="right"><b>expirationYear</b></td>
+            <td><input type="text" value="2031" id="maestro_expirationYear"></td>
+        </tr>
+        <tr>
+            <td align="right"><b>cardverifycode</b></td>
+            <td><input type="text" value="123" id="maestro_cardverifycode"></td>
+        </tr>
+        <tr>
+            <td align="right"><b>cardholdername</b></td>
+            <td><input type="text" value="Jane Doe" id="maestro_cardholdername"></td>
+        </tr>
+        <tr>
+            <td align="right"><b>issueMonth</b></td>
+            <td><input type="text" value="01" id="maestro_issueMonth"></td>
+        </tr>
+        <tr>
+            <td align="right"><b>issueYear</b></td>
+            <td><input type="text" value="2013" id="maestro_issueYear"></td>
+        </tr>
+        <tr>
+            <td align="right"><b>issueNumber</b></td>
+            <td><input type="text" value="1234" id="maestro_issueNumber"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right"><input type="button" value="Store Maestro data" onClick="storeData('Maestro');"></td>
+        </tr>
+    <?php } else { ?>
+        <tr>
+            <td colspan="2">
+                <div id="maestroDataIframe"></div>
+            </td>
+        </tr>
+        <script type="text/javascript">
+            var wd = new WirecardCEE_DataStorage();
+            wd.buildIframeMaestro('maestroDataIframe', '100%', '200px');
+        </script>
+        <tr>
+            <td colspan="2">
+                <i>The HTML containing the input fields for sensitive maestro card data is hosted at Wirecard.
+                    Based on Javascript the consumer input is immediately send to Wirecard, validated and stored in the data storage,
+                    therefore no button for storing this maestro card data is required.</i>
             </td>
         </tr>
     <?php } ?>
