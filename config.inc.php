@@ -67,8 +67,8 @@ $PCI3_DSS_SAQ_A_ENABLE = false;
 // URL for style sheet to format the credit card input fields as delivered by Wirecard
 // please be aware that @import, url() are ignored for security reasons
 //$PCI3_DSS_SAQ_A_IFRAME_CSS_URL = null; // no styling
-//$PCI3_DSS_SAQ_A_IFRAME_CSS_URL = $WEBSITE_URL . 'pci3_iframe-style1.css'; // simple style which sets input fields into new row
-$PCI3_DSS_SAQ_A_IFRAME_CSS_URL = $WEBSITE_URL . 'pci3_iframe-style2.css'; // extended styling of all elements
+//$PCI3_DSS_SAQ_A_IFRAME_CSS_URL = $WEBSITE_URL . 'pci3_iframe_style1.css'; // simple style which sets input fields into new row
+$PCI3_DSS_SAQ_A_IFRAME_CSS_URL = $WEBSITE_URL . 'pci3_iframe_style2.css'; // extended styling of all elements
 
 // optional input fields, possible values are null (means default), true, false
 $PCI3_DSS_SAQ_A_CCARD_SHOW_CVC = true;
