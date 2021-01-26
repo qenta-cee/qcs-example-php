@@ -1,0 +1,19 @@
+/**
+ * QMore Checkout Seamless Demo
+ * - Terms of use can be found under
+ * https://guides.qenta.com/prerequisites
+ * - License can be found under:
+ * https://github.com/qenta-cee/qcs-example-php/blob/master/LICENSE.
+ */
+ 
+.fieldrow-newline {
+    clear: both;
+}
+
+#cvc {
+    width: 80px;
+}
+
+#issueNumber {
+    width: 60px;
+}

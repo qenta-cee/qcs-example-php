@@ -1,0 +1,25 @@
+/**
+ * QMore Checkout Seamless Demo
+ * - Terms of use can be found under
+ * https://guides.qenta.com/prerequisites
+ * - License can be found under:
+ * https://github.com/qenta-cee/qcs-example-php/blob/master/LICENSE.
+ */
+
+body {
+    margin: 0;
+    width: 700px;
+    padding-top: 20px;
+    padding-left: 100px;
+    padding-bottom: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8em;
+}
+
+table {
+    width: 700px;
+}
+
+td {
+    font-size: 0.8em;
+}

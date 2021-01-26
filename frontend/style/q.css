@@ -1,0 +1,252 @@
+/**
+ * QMore Checkout Seamless Demo
+ * - Terms of use can be found under
+ * https://guides.qenta.com/prerequisites
+ * - License can be found under:
+ * https://github.com/qenta-cee/qcs-example-php/blob/master/LICENSE.
+ */
+
+body {
+  margin: 0;
+  width: 700px;
+  padding-top: 20px;
+  padding-left: 100px;
+  padding-bottom: 20px;
+  font-family: europa, sans-serif;
+  font-size: 0.9em;
+  color: rgb(23, 64, 101);
+}
+
+h2 {
+  margin-top: 2em;
+  font-style: italic;
+}
+
+#content {
+  min-height: 100vh;
+}
+
+p.main {
+  font-size: 1.5em;
+}
+
+input[type="submit"], input[type="button"] {
+  cursor: pointer;
+  background-color: #d33c35;
+  color: #fff;
+  border: 1px solid transparent;
+  margin: 0;
+  overflow: visible;
+  font: inherit;
+  padding: 0 20px;
+  font-size: 0.7em;
+  line-height: 1.75rem;
+  text-decoration: none;
+  transition: .1s ease-in-out;
+  transition-property: all;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-origin: border-box;
+}
+
+input[type="submit"]:active, input[type="button"]:active {
+  background-color: #fff;
+  color: #d33c35;
+  border: 1px solid #d33c35;
+}
+
+a {
+  color: #104d92;
+}
+
+select {
+  font-size: inherit;
+}
+
+footer {
+  background-image: url(https://qenta-cee.at/wp-content/uploads/2020/10/RZ-Logo-QENTA-CMYK-invertiert.svg);
+  background-color: #174065;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3em;
+  background-repeat: no-repeat;
+  background-size: 6.5em;
+  color: #fff;
+  margin-top: 1em;
+  background-position-y: center;
+  background-position-x: 1em;
+}
+
+#btnCheckout {
+  font-weight: bold;
+  font-size: inherit;
+  padding: inherit;
+  padding-left: 2em;
+  padding-right: 2em;
+  margin-top: 1.2em;
+}
+
+#btnShowPayloadTable {
+  margin-top: 1em;
+}
+
+#qcpTable, .csTable {
+  border: 0;
+  padding: 1em;
+  font-size: 1.5em;
+}
+
+#qcpTable td, .csTable td {
+  border: 0;
+  border-bottom: 1px solid #ccc;
+}
+
+#qcpTable tr:last-child td, .csTable tr:last-child td {
+  border: 0;
+}
+
+#pDsInit {
+  margin-top: 2em;
+}
+
+table {
+  width: 700px;
+}
+
+table.payload, #tblStep2 {
+  margin-top: 1em;
+  table-layout: fixed;
+  border: 0;
+}
+
+table.payload tr:hover{
+  background-color: #eee;
+}
+
+table.payload td, #tblStep2 td {
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  font-size: 1em;
+  line-break: anywhere;
+}
+
+table.payload td>input {
+  width: 100%;
+  font-family: monospace;
+  border: 0;
+  background-color: #eee;
+  font-size: 1em;
+  color: inherit;
+  padding: 0.5em;
+  padding-right: 0;
+}
+
+#tblStep2 tr>td.last {
+  border-bottom: 0;
+  margin-bottom: 2em;
+}
+
+td {
+  font-size: 0.8em;
+}
+
+big i {
+  color: #d33c35;
+}
+
+table tr>td[colspan="2"]>b {
+  font-size: 1.8em;
+}
+
+.box {
+  width: 40%;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 35px;
+  border: 2px solid #fff;
+  border-radius: 20px/50px;
+  background-clip: padding-box;
+  text-align: center;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 716px;
+  position: relative;
+  transition: all 1s ease-in-out;
+  max-height: 80vh;
+  overflow-y: scroll;
+}
+
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+
+.popup .close:hover {
+  color: #d33c35;
+}
+
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+  padding-bottom: 1em;
+}
+
+#ds.open, #ci.open {
+  visibility: unset;
+  opacity: unset;
+}
+
+#btnCloseDS, #btnCloseCI {
+  cursor: pointer;
+}
+
+iframe {
+  border: 2px solid #ccc;
+}
+
+#iframeCO {
+  height: 410px;
+  width: 700px;
+}
+
+#contentStart, #contentReturn {
+  text-align: center;
+  min-height: unset;
+}
+
+#bodyStart, #bodyReturn {
+  width: unset;
+  padding-top: unset;
+  padding-left: unset;
+  padding-bottom: unset;
+}
