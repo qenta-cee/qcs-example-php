@@ -508,7 +508,7 @@ foreach (explode('&', $curlResult) as $keyvalue) {
     <?php if (!$PCI3_DSS_SAQ_A_ENABLE) { ?>
         <tr>
             <td align="right"><b>pan</b></td>
-            <td><input type="text" value="9500000000000001" id="maestro_pan"></td>
+            <td><input type="text" value="9600000000000005" id="maestro_pan"></td>
         </tr>
         <tr>
             <td align="right"><b>expirationMonth</b></td>
