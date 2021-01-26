@@ -1,49 +1,44 @@
 <?php
-//--------------------------------------------------------------------------------//
-//                                                                                //
-// Wirecard Checkout Seamless Example                                             //
-//                                                                                //
-// Copyright (c)                                                                  //
-// Wirecard Central Eastern Europe GmbH                                           //
-// www.wirecard.at                                                                //
-//                                                                                //
-// THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY         //
-// KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE            //
-// IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A                     //
-// PARTICULAR PURPOSE.                                                            //
-//                                                                                //
-//--------------------------------------------------------------------------------//
-// THIS EXAMPLE IS FOR DEMONSTRATION PURPOSES ONLY!                               //
-//--------------------------------------------------------------------------------//
-// Please read the integration documentation before modifying this file.          //
-//--------------------------------------------------------------------------------//
+/**
+ * QMore Checkout Seamless Demo
+ * - Terms of use can be found under
+ * https://guides.qenta.com/prerequisites
+ * - License can be found under:
+ * https://github.com/qenta-cee/qcs-example-php/blob/master/LICENSE.
+ */
+
+require_once '../includes/function.inc.php';
 
 // loads the merchant specific parameters from the config file
-require_once("../config.inc.php");
+require_once '../includes/config.inc.php';
 
 session_start();
-$_SESSION["amount"] = 30;
-$_SESSION["currency"] = "EUR";
+$_SESSION['amount'] = 30;
+$_SESSION['currency'] = 'EUR';
 
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Wirecard Checkout Seamless Example</title>
-    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <title>QMore Checkout Seamless Example</title>
+    <link rel="stylesheet" type="text/css" href="style/styles.css">
+    <link rel="stylesheet" type="text/css" href="style/q.css">
+    <link rel="stylesheet" href="https://use.typekit.net/ucf2gvc.css">
 </head>
-<body>
+<body id="bodyStart">
+<div id="contentStart">
 <form name="form" action="init.php" method="post">
-    <table border="1" bordercolor="lightgray" cellpadding="10" cellspacing="0">
+    <table class="csTable" border="1" bordercolor="lightgray" cellpadding="10" cellspacing="0">
         <tr>
             <td colspan="2"><b>Your order details for this demo payment</b></td>
         </tr>
         <tr>
             <td align="right"><b>Amount:</b></td>
-            <td><?php echo $_SESSION["currency"] . " " . $_SESSION["amount"]; ?></td>
+            <td><?php echo $_SESSION['currency'].' '.$_SESSION['amount']; ?></td>
         </tr>
         <tr>
             <td align="right"><b>Order ident:</b></td>
-            <td><?php echo $_SESSION["orderIdent"]; ?></td>
+            <td><?php echo $_SESSION['orderIdent']; ?></td>
         </tr>
         <tr>
             <td align="right"><b>Payment type:</b></td>
@@ -54,7 +49,7 @@ $_SESSION["currency"] = "EUR";
                     <option value="CCARD-MOTO">Credit Card - Mail or Telephone Order</option>
                     <option value="EKONTO">eKonto</option>
                     <option value="SEPA-DD">SEPA Direct Debit</option>
-                    <option value="EPS">eps-&Uuml;berweisung</option>
+                    <option value="EPS">eps-Überweisung</option>
                     <option value="GIROPAY">giropay</option>
                     <option value="IDL">iDEAL</option>
                     <option value="INSTALLMENT">Installment</option>
@@ -97,14 +92,14 @@ $_SESSION["currency"] = "EUR";
                 <select name="financialInstitutionEPS">
                     <option value="ARZ|AB">Apothekerbank</option>
 					<option value="ARZ|AAB">Austrian Anadi Bank AG</option>
-					<option value="ARZ|BAF">&Auml;rztebank</option>
+					<option value="ARZ|BAF">Ärztebank</option>
 					<option value="BA-CA">Bank Austria</option>
-					<option value="ARZ|BCS">Bankhaus Carl Sp&auml;ngler &amp; Co. AG</option>
+					<option value="ARZ|BCS">Bankhaus Carl Spängler &amp; Co. AG</option>
 					<option value="ARZ|BSS">Bankhaus Schelhammer &amp; Schattera AG</option>
 					<option value="Bawag|B">BAWAG P.S.K. AG</option>
 					<option value="ARZ|BKS">BKS Bank AG</option>
-					<option value="ARZ|BKB">Br&uuml;ll Kallmus Bank AG</option>
-					<option value="ARZ|BTV">BTV VIER L&Auml;NDER BANK</option>
+					<option value="ARZ|BKB">Brüll Kallmus Bank AG</option>
+					<option value="ARZ|BTV">BTV VIER LÄNDER BANK</option>
 					<option value="ARZ|CBGG">Capital Bank Grawe Gruppe AG</option>
 					<option value="ARZ|DB">Dolomitenbank</option>
 					<option value="Bawag|E">Easybank AG</option>
@@ -113,14 +108,14 @@ $_SESSION["currency"] = "EUR";
 					<option value="ARZ|VLH">Hypo Landesbank Vorarlberg</option>
 					<option value="ARZ|HI">HYPO NOE Gruppe Bank AG</option>
 					<option value="ARZ|NLH">HYPO NOE Landesbank AG</option>
-					<option value="Hypo-Racon|O">Hypo Ober&ouml;sterreich</option>
+					<option value="Hypo-Racon|O">Hypo Oberösterreich</option>
 					<option value="Hypo-Racon|S">Hypo Salzburg</option>
 					<option value="Hypo-Racon|St">Hypo Steiermark</option>
 					<option value="ARZ|HTB">Hypo Tirol Bank AG</option>
 					<option value="BB-Racon">HYPO-BANK BURGENLAND Aktiengesellschaft</option>
 					<option value="ARZ|IB">Immo-Bank</option>
 					<option value="ARZ|OB">Oberbank AG</option>
-					<option value="Racon">Raiffeisen Bankengruppe &Ouml;sterreich</option>
+					<option value="Racon">Raiffeisen Bankengruppe Österreich</option>
 					<option value="ARZ|SB">Schoellerbank AG</option>
 					<option value="Bawag|S">Sparda Bank Wien</option>
 					<option value="ARZ|SBA">Sparda-Bank Austria</option>
@@ -146,5 +141,6 @@ function toggleFinancialInstitutions(select) {
     }
 }
 </script>
+</div>
 </body>
 </html>

@@ -1,8 +1,23 @@
-2016-04-26 10:15:02 There occured an error during the payment transaction.
+2021-01-25 16:42:59 The payment has been successfully completed.
 
-The Wirecard Checkout Seamless returned the following parameters:
-error_1_errorCode = 99996
-error_1_message = QPAY-Session timed out after 30 minutes without activity.
-error_1_consumerMessage = QPAY-Session timed out after 30 minutes without activity.
-errors = 1
-paymentState = FAILURE
+The QMore Checkout Seamless returned the following parameters:
+amount = 30
+currency = EUR
+paymentType = CCARD
+financialInstitution = MC
+language = en
+orderNumber = 5645979
+paymentState = SUCCESS
+authenticated = Yes
+anonymousPan = 0001
+expiry = 12/2031
+cardholder = Jane Doe
+maskedPan = 950000******0001
+gatewayReferenceNumber = DGW_5645979_RN
+gatewayContractNumber = DemoContractNumber123
+avsResponseCode = X
+avsResponseMessage = Demo AVS ResultMessage
+avsProviderResultCode = X
+avsProviderResultMessage = Demo AVS ProviderResultMessage
+responseFingerprintOrder = amount,currency,paymentType,financialInstitution,language,orderNumber,paymentState,authenticated,anonymousPan,expiry,cardholder,maskedPan,gatewayReferenceNumber,gatewayContractNumber,avsResponseCode,avsResponseMessage,avsProviderResultCode,avsProviderResultMessage,secret,responseFingerprintOrder
+responseFingerprint = e70bead45cdb6399a1ffffd11150c4e7e7b3d8946d58674613cbf7013f480bc6de3148caa2b14406f16c4147581902b86bc34fd86738e926495d07da3494c881
