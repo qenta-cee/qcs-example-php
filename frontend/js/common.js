@@ -1,3 +1,11 @@
+/**
+ * QMore Checkout Seamless Demo
+ * - Terms of use can be found under
+ * https://guides.qenta.com/prerequisites
+ * - License can be found under:
+ * https://github.com/qenta-cee/qcs-example-php/blob/master/LICENSE.
+ */
+
 function reinitPage() {
   window.scrollTo(0, 0);
   window.location.reload();

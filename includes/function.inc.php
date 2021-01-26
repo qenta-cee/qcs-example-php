@@ -1,4 +1,11 @@
 <?php
+/**
+ * QMore Checkout Seamless Demo
+ * - Terms of use can be found under
+ * https://guides.qenta.com/prerequisites
+ * - License can be found under:
+ * https://github.com/qenta-cee/qcs-example-php/blob/master/LICENSE.
+ */
 
 // to avoid having customer modify PHP module configuration
 require_once 'curl-polyfill.php';

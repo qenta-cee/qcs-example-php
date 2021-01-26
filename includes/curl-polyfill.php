@@ -1,4 +1,11 @@
 <?php
+/**
+ * QMore Checkout Seamless Demo
+ * - Terms of use can be found under
+ * https://guides.qenta.com/prerequisites
+ * - License can be found under:
+ * https://github.com/qenta-cee/qcs-example-php/blob/master/LICENSE.
+ */
 
 if (!extension_loaded('curl')) {
     function curl_init()
