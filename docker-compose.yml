@@ -1,0 +1,17 @@
+version: '2'
+services:
+  app:
+    container_name: qcs_example_php
+    build: docker
+    ports:
+      - "8000:80"
+      - "1443:443"
+    volumes:
+      - ./:/var/www/html/
+    environment:
+      - QCS_ENDPOINT=${QCS_ENDPOINT}
+      - QCS_BASEURL=${QCS_BASEURL}
+      - QCS_ORDER_NUMBER=${QCS_ORDER_NUMBER:-ABC123}
+      - QCS_CUSTOMER_ID=${QCS_CUSTOMER_ID}
+      - QCS_SHOP_ID=${QCS_SHOP_ID}
+      - QCS_SHOP_SECRET=${QCS_SHOP_SECRET}
