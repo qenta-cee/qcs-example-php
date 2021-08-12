@@ -30,7 +30,7 @@ $shopId = "seamless";
 $STORAGE_ID = "QENTA_dataStorageId";
 
 // URLs for accessing the QENTA Checkout Platform
-$URL_QENTA_CHECKOUT = "https://api.qenta.com";
+$URL_QENTA_CHECKOUT = "http://rhs-dev04.qenta.com";
 $URL_DATASTORAGE_INIT = $URL_QENTA_CHECKOUT . "/seamless/dataStorage/init";
 $URL_DATASTORAGE_READ = $URL_QENTA_CHECKOUT . "/seamless/dataStorage/read";
 $URL_FRONTEND_INIT = $URL_QENTA_CHECKOUT . "/seamless/frontend/init";
