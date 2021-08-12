@@ -110,10 +110,10 @@ if (!function_exists('curl_init')) {
 // server-to-server request is enabled)
 $curl = curl_init();
 
+
+var_dump($URL_DATASTORAGE_INIT);
 // sets the required options for the POST request via curl
 curl_setopt($curl, CURLOPT_URL, $URL_DATASTORAGE_INIT);
-curl_setopt($curl, CURLOPT_PORT, $QENTA_CHECKOUT_PORT);
-curl_setopt($curl, CURLOPT_PROTOCOLS, $QENTA_CHECKOUT_PROTOCOL);
 curl_setopt($curl, CURLOPT_POST, true);
 curl_setopt($curl, CURLOPT_POSTFIELDS, $postFields);
 curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
@@ -122,14 +122,30 @@ curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 
 // sends a POST request to the QENTA Checkout Platform and stores the
 // result returned from the QENTA Data Storage in a string for later use
-$curlResult = curl_exec($curl);
-if (!$curlResult) {
-    $error = curl_error($curl);
-    var_dump($error);
-}
+//$curlResult = curl_exec($curl);
 
-// closes the connection to the QENTA Checkout Platform
-curl_close($curl);
+$data = array('key1' => 'value1', 'key2' => 'value2');
+
+// use key 'http' even if you send the request to https://...
+$options = array(
+  'http' => array(
+    'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+    'method'  => 'POST',
+    'content' => $postFields,
+  ),
+);
+$context  = stream_context_create($options);
+$curlResult = file_get_contents($URL_DATASTORAGE_INIT, false, $context);
+
+var_dump($curlResult);
+
+// if (!$curlResult) {
+//     $error = curl_error($curl);
+//     var_dump($error);
+// }
+
+// // closes the connection to the QENTA Checkout Platform
+// curl_close($curl);
 
 //--------------------------------------------------------------------------------//
 // Retrieves the storage id and the JavaScript URL returned from the
