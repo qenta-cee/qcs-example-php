@@ -124,6 +124,7 @@ curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 // result returned from the QENTA Data Storage in a string for later use
 $curlResult = curl_exec($curl);
 if (!$curlResult) {
+    var_dump($URL_DATASTORAGE_INIT);
     $error = curl_error($curl);
     var_dump($error);
 }
