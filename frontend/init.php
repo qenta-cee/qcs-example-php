@@ -213,6 +213,7 @@ $postFields .= '&windowName='.$windowName;
 // closes the connection to the QENTA Checkout Platform
 
 $curlResult = IssueRequest($URL_FRONTEND_INIT, $postFields);
+
 //--------------------------------------------------------------------------------//
 // Retrieves the value for the redirect URL.
 //--------------------------------------------------------------------------------//
