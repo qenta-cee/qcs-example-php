@@ -99,53 +99,11 @@ if ($PCI3_DSS_SAQ_A_ENABLE) {
     }
 }
 
-// is cURL installed yet?
-if (!function_exists('curl_init')) {
-    exit('Sorry the cURL library is required but was not found! Please follow the instructions in the README about how to install it.');
-}
-
-// initializes the libcurl of PHP used for sending a POST request
-// to the QENTA Data Storage as a server-to-server request
+// send a POST request to the QENTA Data Storage as a server-to-server request
 // (please be aware that you have to use a web server where a
 // server-to-server request is enabled)
-$curl = curl_init();
 
-
-var_dump($URL_DATASTORAGE_INIT);
-// sets the required options for the POST request via curl
-curl_setopt($curl, CURLOPT_URL, $URL_DATASTORAGE_INIT);
-curl_setopt($curl, CURLOPT_POST, true);
-curl_setopt($curl, CURLOPT_POSTFIELDS, $postFields);
-curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
-
-// sends a POST request to the QENTA Checkout Platform and stores the
-// result returned from the QENTA Data Storage in a string for later use
-//$curlResult = curl_exec($curl);
-
-$data = array('key1' => 'value1', 'key2' => 'value2');
-
-// use key 'http' even if you send the request to https://...
-$options = array(
-  'http' => array(
-    'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-    'method'  => 'POST',
-    'content' => $postFields,
-  ),
-);
-$context  = stream_context_create($options);
-$curlResult = file_get_contents($URL_DATASTORAGE_INIT, false, $context);
-
-var_dump($curlResult);
-
-// if (!$curlResult) {
-//     $error = curl_error($curl);
-//     var_dump($error);
-// }
-
-// // closes the connection to the QENTA Checkout Platform
-// curl_close($curl);
+$curlresult = IssueRequest($URL_DATASTORAGE_INIT, $postFields);
 
 //--------------------------------------------------------------------------------//
 // Retrieves the storage id and the JavaScript URL returned from the

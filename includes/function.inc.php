@@ -27,4 +27,26 @@ function getBaseUrl()
     return join('', $url);
 }
 
+function issueRequest($url, $fieldquery){
+
+    var_dump($url);
+
+    $options = array(
+        'http' => array(
+          'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+          'method'  => 'POST',
+          'content' => $fieldquery,
+        ),
+        "ssl"=>array(
+            "verify_peer"=>false,
+            "verify_peer_name"=>false,
+        ),
+      );
+
+      $context  = stream_context_create($options);
+      $result = file_get_contents($url, false, $context);
+
+
+    return $result;
+}
 ?>

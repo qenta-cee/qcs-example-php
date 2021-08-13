@@ -63,28 +63,16 @@ if (!function_exists('curl_init')) {
 
 // initializes the libcurl of PHP used for sending a POST request
 // to the QENTA Checkout Platform as a server-to-server request
-$curl = curl_init();
 
 // sets the required options for the POST request via curl
-curl_setopt($curl, CURLOPT_URL, $URL_DATASTORAGE_READ);
-curl_setopt($curl, CURLOPT_PORT, $QENTA_CHECKOUT_PORT);
-curl_setopt($curl, CURLOPT_PROTOCOLS, $QENTA_CHECKOUT_PROTOCOL);
-curl_setopt($curl, CURLOPT_POST, true);
-curl_setopt($curl, CURLOPT_POSTFIELDS, $postFields);
-curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 
 // sends a POST request to the QENTA Checkout Platform and stores the
 // result returned from the QENTA Data Storage in a string for later use
-$curlResult = curl_exec($curl);
-if (!$curlResult) {
-    $error = curl_error($curl);
-    var_dump($error);
-}
+
 
 // closes the connection to the QENTA Checkout Platform
-curl_close($curl);
+
+$curlResult = IssueRequest($URL_DATASTORAGE_READ, $postFields);
 ?>
 <!DOCTYPE html>
 <html lang="en">
