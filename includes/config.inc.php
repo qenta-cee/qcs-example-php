@@ -30,7 +30,7 @@ $shopId = getenv('QCS_SHOP_ID') ?: "seamless";
 $STORAGE_ID = "QENTA_dataStorageId";
 
 // URLs for accessing the QENTA Checkout Platform
-$URL_QENTA_CHECKOUT = getenv('QCS_ENDPOINT') ?: "https:/api.qenta.com:443";
+$URL_QENTA_CHECKOUT = getenv('QCS_ENDPOINT') ?: "https://api.qenta.com:443";
 $URL_DATASTORAGE_INIT = $URL_QENTA_CHECKOUT . "/qmore/dataStorage/init";
 $URL_DATASTORAGE_READ = $URL_QENTA_CHECKOUT . "/qmore/dataStorage/read";
 $URL_FRONTEND_INIT = $URL_QENTA_CHECKOUT . "/qmore/frontend/init";

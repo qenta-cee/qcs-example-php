@@ -104,7 +104,6 @@ if ($PCI3_DSS_SAQ_A_ENABLE) {
 // server-to-server request is enabled)
 
 $curlresult = IssueRequest($URL_DATASTORAGE_INIT, $postFields);
-
 //--------------------------------------------------------------------------------//
 // Retrieves the storage id and the JavaScript URL returned from the
 // initiation of the QENTA Data Storage by the previous POST request.
