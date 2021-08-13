@@ -151,6 +151,8 @@ foreach (explode('&', $curlResult) as $keyvalue) {
 
         // function for storing sensitive data to the QENTA Data Storage
         function storeData(aPaymentType) {
+            
+            console.log(aPaymentType);
             // sets the selected payment type where sensitive data should be stored
             paymentType = aPaymentType;
             // creates a new JavaScript object containing the QENTA Data Storage functionality
