@@ -1,4 +1,4 @@
-2021-08-13 07:29:29 The payment has been successfully completed.
+2021-08-26 11:18:58 The payment has been successfully completed.
 
 The QMore Checkout Seamless returned the following parameters:
 amount = 30
@@ -6,18 +6,17 @@ currency = EUR
 paymentType = CCARD
 financialInstitution = MC
 language = en
-orderNumber = 1482103
+orderNumber = 168331229
 paymentState = SUCCESS
+providerReferenceNumber = 0f82d1f0-406c-4114-99f8-3071189f505d
+providerContractNumber = 0f8d6ab2-cbf8-4bdb-bfae-2b62b082f90a
+providerTokenId = 5895675739281006
 authenticated = Yes
-anonymousPan = 0001
-expiry = 12/2031
+anonymousPan = 1006
+expiry = 01/2023
 cardholder = Jane Doe
-maskedPan = 950000******0001
-gatewayReferenceNumber = DGW_1482103_RN
-gatewayContractNumber = DemoContractNumber123
-avsResponseCode = X
-avsResponseMessage = Demo AVS ResultMessage
-avsProviderResultCode = X
-avsProviderResultMessage = Demo AVS ProviderResultMessage
-responseFingerprintOrder = amount,currency,paymentType,financialInstitution,language,orderNumber,paymentState,authenticated,anonymousPan,expiry,cardholder,maskedPan,gatewayReferenceNumber,gatewayContractNumber,avsResponseCode,avsResponseMessage,avsProviderResultCode,avsProviderResultMessage,secret,responseFingerprintOrder
-responseFingerprint = 23fb923b473886d4f8da24a30d04aa01935afa85f1a28f7f2eb13efee6097d332d09c6daa43b5783aa63212a502f48a74d430fe08985a771aa2e61a75c8e1e69
+maskedPan = 541333******1006
+gatewayReferenceNumber = C906939162997673662830
+gatewayContractNumber = 70003
+responseFingerprintOrder = amount,currency,paymentType,financialInstitution,language,orderNumber,paymentState,providerReferenceNumber,providerContractNumber,providerTokenId,authenticated,anonymousPan,expiry,cardholder,maskedPan,gatewayReferenceNumber,gatewayContractNumber,secret,responseFingerprintOrder
+responseFingerprint = 8a91d9bc9c2a909cfc45b29ecc5d5fdefa49d0dd5c08331cc0754ac392166ccebca4310631f73b893f7d886c5f53f1a69b9d45bf3194251e76f741055d81f9f6
