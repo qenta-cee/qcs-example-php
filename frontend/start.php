@@ -13,7 +13,7 @@ require_once '../includes/function.inc.php';
 require_once '../includes/config.inc.php';
 
 session_start();
-$_SESSION['amount'] = 30;
+$_SESSION['amount'] = 1000;
 $_SESSION['currency'] = 'EUR';
 
 ?>
@@ -65,6 +65,7 @@ $_SESSION['currency'] = 'EUR';
                     <option value="SKRILLWALLET">Skrill Digital Wallet</option>
                     <option value="SOFORTUEBERWEISUNG">sofortueberweisung</option>
                     <option value="TRUSTLY">Trustly</option>
+                    <option value="AFTERPAY">Afterpay</option>
                     <option value="VOUCHER">Voucher</option>
                 </select>
             </td>
@@ -125,6 +126,15 @@ $_SESSION['currency'] = 'EUR';
                 </select>
             </td>
         </tr>
+        <tr id="financialInstitutionAFTERPAY" style="display: none;">
+            <td align="right"><b>Financial institution:</b></td>
+            <td>
+                <select name="financialInstitutionAFTERPAY">
+                    <option value="AFTERPAY-INST">Installment</option>
+                    <option value="AFTERPAY-INV">Invoice</option>
+                </select>
+            </td>
+        </tr>
         <tr>
             <td colspan="2" align="right"><input type="submit" value="Checkout"/></td>
         </tr>
@@ -134,9 +144,9 @@ $_SESSION['currency'] = 'EUR';
 function toggleFinancialInstitutions(select) {
     document.getElementById('financialInstitutionIDL').style.display = 'none';
     document.getElementById('financialInstitutionEPS').style.display = 'none';
-
+    document.getElementById('financialInstitutionAFTERPAY').style.display = 'none';
     var paymentType = select.options[select.selectedIndex].value;
-    if(paymentType == "IDL" || paymentType == "EPS") {
+    if(paymentType == "IDL" || paymentType == "EPS" || paymentType == "AFTERPAY") {
         document.getElementById('financialInstitution' + paymentType).style.display = 'table-row';
     }
 }

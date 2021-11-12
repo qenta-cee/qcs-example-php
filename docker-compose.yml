@@ -5,7 +5,7 @@ services:
     build: docker
     ports:
       - "${QCS_EXAMPLE_PORT}:80"
-      - "1443:443"
+      - "2443:443"
     volumes:
       - ./:/var/www/html/
     environment:

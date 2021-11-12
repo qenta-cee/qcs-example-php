@@ -231,6 +231,7 @@ foreach (explode('&', $curlResult) as $keyvalue) {
                 // stores sensitive data to the QENTA Data Storage
                 dataStorage.storeVoucherInformation(paymentInformation, callbackFunction);
             }
+            console.log
         }
 
         // callback function for displaying the results of storing the
@@ -425,19 +426,19 @@ foreach (explode('&', $curlResult) as $keyvalue) {
     <?php if (!$PCI3_DSS_SAQ_A_ENABLE) { ?>
         <tr>
             <td align="right"><b>pan</b></td>
-            <td><input type="text" value="9500000000000001" id="cc_moto_pan"></td>
+            <td><input type="text" value="5413330300001006" id="cc_moto_pan"></td>
         </tr>
         <tr>
             <td align="right"><b>expirationMonth</b></td>
-            <td><input type="text" value="12" id="cc_moto_expirationMonth"></td>
+            <td><input type="text" value="01" id="cc_moto_expirationMonth"></td>
         </tr>
         <tr>
             <td align="right"><b>expirationYear</b></td>
-            <td><input type="text" value="2031" id="cc_moto_expirationYear"></td>
+            <td><input type="text" value="2023" id="cc_moto_expirationYear"></td>
         </tr>
         <tr>
             <td align="right"><b>cardverifycode</b></td>
-            <td><input type="text" value="123" id="cc_moto_cardverifycode"></td>
+            <td><input type="text" value="006" id="cc_moto_cardverifycode"></td>
         </tr>
         <tr>
             <td align="right"><b>cardholdername</b></td>

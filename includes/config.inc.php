@@ -31,9 +31,9 @@ $STORAGE_ID = "QENTA_dataStorageId";
 
 // URLs for accessing the QENTA Checkout Platform
 $URL_QENTA_CHECKOUT = getenv('QCS_ENDPOINT') ?: "https://api.qenta.com:443";
-$URL_DATASTORAGE_INIT = $URL_QENTA_CHECKOUT . "/qmore/dataStorage/init";
-$URL_DATASTORAGE_READ = $URL_QENTA_CHECKOUT . "/qmore/dataStorage/read";
-$URL_FRONTEND_INIT = $URL_QENTA_CHECKOUT . "/qmore/frontend/init";
+$URL_DATASTORAGE_INIT = $URL_QENTA_CHECKOUT . "/seamless/dataStorage/init";
+$URL_DATASTORAGE_READ = $URL_QENTA_CHECKOUT . "/seamless/dataStorage/read";
+$URL_FRONTEND_INIT = $URL_QENTA_CHECKOUT . "/seamless/frontend/init";
 
 // name of iFrame containing the checkout
 $CHECKOUT_WINDOW_NAME = "qenta_checkout";
@@ -48,7 +48,7 @@ $WEBSITE_URL = getBaseUrl();
 // true, to enable compliance to PCI3 DSS SAQ-A where the web page containing the
 // input fields for credit card data is delivered by QENTA and not via
 // the web server of the merchant
-$PCI3_DSS_SAQ_A_ENABLE = false;
+$PCI3_DSS_SAQ_A_ENABLE = true;
 
 // URL for style sheet to format the credit card input fields as delivered by QENTA
 // please be aware that @import, url() are ignored for security reasons
