@@ -56,6 +56,7 @@ $consumerBillingCountry = 'AT';
 $consumerBillingPhone = '0043316898989';
 $consumerEmail = 'john.doe@example.com';
 $consumerBirthDate = '1990-01-01';
+$customerStatement = "Test TX";
 
 // sets basket data
 $basketItems = 1;
@@ -123,6 +124,8 @@ $requestFingerprintOrder .= 'consumerEmail,';
 $requestFingerprintSeed .= $consumerEmail;
 $requestFingerprintOrder .= 'consumerBirthDate,';
 $requestFingerprintSeed .= $consumerBirthDate;
+$requestFingerprintOrder .= 'customerStatement,';
+$requestFingerprintSeed .= $customerStatement;
 $requestFingerprintOrder .= 'basketItems,';
 $requestFingerprintSeed .= $basketItems;
 $requestFingerprintOrder .= 'basketItem1ArticleNumber,';
@@ -200,6 +203,8 @@ $postFields .= '&basketItem1UnitNetAmount='.$basketItem1UnitNetAmount;
 $postFields .= '&basketItem1UnitTaxAmount='.$basketItem1UnitTaxAmount;
 $postFields .= '&basketItem1UnitTaxRate='.$basketItem1UnitTaxRate;
 $postFields .= '&windowName='.$windowName;
+$postFields .= '&customerStatement='.$customerStatement;
+
 
 // initializes the libcurl of PHP used for sending a POST request
 // to the QENTA Data Storage as a server-to-server request

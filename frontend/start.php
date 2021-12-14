@@ -13,7 +13,7 @@ require_once '../includes/function.inc.php';
 require_once '../includes/config.inc.php';
 
 session_start();
-$_SESSION['amount'] = 1000;
+$_SESSION['amount'] = 30;
 $_SESSION['currency'] = 'EUR';
 
 ?>
@@ -67,6 +67,7 @@ $_SESSION['currency'] = 'EUR';
                     <option value="TRUSTLY">Trustly</option>
                     <option value="AFTERPAY">Afterpay</option>
                     <option value="VOUCHER">Voucher</option>
+                    <option value="CRYPTO">Crypto</option>
                 </select>
             </td>
         </tr>
