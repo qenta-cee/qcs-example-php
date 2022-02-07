@@ -1,22 +1,10 @@
-2021-08-26 11:18:58 The payment has been successfully completed.
+2022-02-07 08:24:58 There occured an error during the payment transaction.
 
 The QMore Checkout Seamless returned the following parameters:
-amount = 30
-currency = EUR
-paymentType = CCARD
-financialInstitution = MC
-language = en
-orderNumber = 168331229
-paymentState = SUCCESS
-providerReferenceNumber = 0f82d1f0-406c-4114-99f8-3071189f505d
-providerContractNumber = 0f8d6ab2-cbf8-4bdb-bfae-2b62b082f90a
-providerTokenId = 5895675739281006
-authenticated = Yes
-anonymousPan = 1006
-expiry = 01/2023
-cardholder = Jane Doe
-maskedPan = 541333******1006
-gatewayReferenceNumber = C906939162997673662830
-gatewayContractNumber = 70003
-responseFingerprintOrder = amount,currency,paymentType,financialInstitution,language,orderNumber,paymentState,providerReferenceNumber,providerContractNumber,providerTokenId,authenticated,anonymousPan,expiry,cardholder,maskedPan,gatewayReferenceNumber,gatewayContractNumber,secret,responseFingerprintOrder
-responseFingerprint = 8a91d9bc9c2a909cfc45b29ecc5d5fdefa49d0dd5c08331cc0754ac392166ccebca4310631f73b893f7d886c5f53f1a69b9d45bf3194251e76f741055d81f9f6
+error_1_errorCode = 15200
+error_1_message = INITIATION has an invalid length.
+error_1_consumerMessage = INITIATION has an invalid length.
+error_1_paySysMessage = Value QENGINE for parameter INITTYPE has invalid length.
+error_1_providerMessage = 
+errors = 1
+paymentState = FAILURE
