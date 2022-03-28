@@ -210,7 +210,6 @@ $curl = curl_init();
 // sets the required options for the POST request via curl
 curl_setopt($curl, CURLOPT_URL, $URL_FRONTEND_INIT);
 curl_setopt($curl, CURLOPT_PORT, $QENTA_CHECKOUT_PORT);
-curl_setopt($curl, CURLOPT_PROTOCOLS, $QENTA_CHECKOUT_PROTOCOL);
 curl_setopt($curl, CURLOPT_POST, true);
 curl_setopt($curl, CURLOPT_POSTFIELDS, $postFields);
 curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);

@@ -113,7 +113,6 @@ $curl = curl_init();
 // sets the required options for the POST request via curl
 curl_setopt($curl, CURLOPT_URL, $URL_DATASTORAGE_INIT);
 curl_setopt($curl, CURLOPT_PORT, $QENTA_CHECKOUT_PORT);
-curl_setopt($curl, CURLOPT_PROTOCOLS, $QENTA_CHECKOUT_PROTOCOL);
 curl_setopt($curl, CURLOPT_POST, true);
 curl_setopt($curl, CURLOPT_POSTFIELDS, $postFields);
 curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
@@ -183,29 +182,14 @@ foreach (explode('&', $curlResult) as $keyvalue) {
             // sets the selected payment type where sensitive data should be stored
             paymentType = aPaymentType;
             // creates a new JavaScript object containing the QENTA Data Storage functionality
-            var dataStorage = new WirecardCEE_DataStorage();
+            var dataStorage = new QentaCEE_DataStorage();
             // initializes the JavaScript object containing the payment specific information and data
             var paymentInformation = {};
-            if (aPaymentType == "Maestro") {
-                if (!document.getElementById('maestro_pan')) {
-                    dataStorage.storeMaestroInformation(null, callbackFunction);
-                } else {
-                    paymentInformation.pan = document.getElementById('maestro_pan').value;
-                    paymentInformation.expirationMonth = document.getElementById('maestro_expirationMonth').value;
-                    paymentInformation.expirationYear = document.getElementById('maestro_expirationYear').value;
-                    paymentInformation.cardholdername = document.getElementById('maestro_cardholdername').value;
-                    paymentInformation.cardverifycode = document.getElementById('maestro_cardverifycode').value;
-                    paymentInformation.issueMonth = document.getElementById('maestro_issueMonth').value;
-                    paymentInformation.issueYear = document.getElementById('maestro_issueYear').value;
-                    paymentInformation.issueNumber = document.getElementById('maestro_issueNumber').value;
-                    // stores sensitive data to the QENTA Data Storage
-                    dataStorage.storeMaestroInformation(paymentInformation, callbackFunction);
-                }
-            }
             if (aPaymentType == "CreditCardMoto") {
                 if (!document.getElementById('cc_moto_pan')) {
                     dataStorage.storeCreditCardMotoInformation(null, callbackFunction);
                 } else {
+                    document.getElementById('iframeCO').src = document.getElementById('iframeCO').src.replace(/start.php.*/, 'start.php?paymentType=CCARD-MOTO');
                     paymentInformation.pan = document.getElementById('cc_moto_pan').value;
                     paymentInformation.expirationMonth = document.getElementById('cc_moto_expirationMonth').value;
                     paymentInformation.expirationYear = document.getElementById('cc_moto_expirationYear').value;
@@ -222,6 +206,7 @@ foreach (explode('&', $curlResult) as $keyvalue) {
                 if (!document.getElementById('cc_pan')) {
                     dataStorage.storeCreditCardInformation(null, callbackFunction);
                 } else {
+                    document.getElementById('iframeCO').src = document.getElementById('iframeCO').src.replace(/start.php.*/, 'start.php?paymentType=CCARD');
                     paymentInformation.pan = document.getElementById('cc_pan').value;
                     paymentInformation.expirationMonth = document.getElementById('cc_expirationMonth').value;
                     paymentInformation.expirationYear = document.getElementById('cc_expirationYear').value;
@@ -235,28 +220,12 @@ foreach (explode('&', $curlResult) as $keyvalue) {
                 }
             }
             if (aPaymentType == "SEPA-DD") {
+                document.getElementById('iframeCO').src = document.getElementById('iframeCO').src.replace(/start.php.*/, 'start.php?paymentType=SEPA-DD');
                 paymentInformation.bankBic = document.getElementById('sepa-dd_bankBic').value;
                 paymentInformation.bankAccountIban = document.getElementById('sepa-dd_bankAccountIban').value;
                 paymentInformation.accountOwner = document.getElementById('sepa-dd_accountOwner').value;
                 // stores sensitive data to the QENTA Data Storage
                 dataStorage.storeSepaDdInformation(paymentInformation, callbackFunction);
-            }
-            if (aPaymentType == "paybox") {
-                paymentInformation.payerPayboxNumber = document.getElementById('payerPayboxNumber').value;
-                // stores sensitive data to the QENTA Data Storage
-                dataStorage.storePayboxInformation(paymentInformation, callbackFunction);
-            }
-            if (aPaymentType == "giropay") {
-                paymentInformation.accountOwner = document.getElementById('giropay_accountOwner').value;
-                paymentInformation.bankAccount = document.getElementById('giropay_bankAccount').value;
-                paymentInformation.bankNumber = document.getElementById('giropay_bankNumber').value;
-                // stores sensitive data to the QENTA Data Storage
-                dataStorage.storeGiropayInformation(paymentInformation, callbackFunction);
-            }
-            if (aPaymentType == "voucher") {
-                paymentInformation.voucherId = document.getElementById('voucherId').value;
-                // stores sensitive data to the QENTA Data Storage
-                dataStorage.storeVoucherInformation(paymentInformation, callbackFunction);
             }
         }
 
@@ -281,17 +250,6 @@ foreach (explode('&', $curlResult) as $keyvalue) {
                     s += "bankBic: " + info.bankBic + "\n";
                     s += "bankAccountIban: " + info.bankAccountIban + "\n";
                     s += "accountOwner: " + info.accountOwner + "\n";
-                }
-                if (paymentType == "paybox") {
-                    s += "payerPayboxNumber: " + info.payerPayboxNumber + "\n";
-                }
-                if (paymentType == "giropay") {
-                    s += "accountOwner: " + info.accountOwner + "\n";
-                    s += "bankAccount: " + info.bankAccount + "\n";
-                    s += "bankNumber: " + info.bankNumber + "\n";
-                }
-                if (paymentType == "voucher") {
-                    s += "voucherId: " + info.voucherId + "\n";
                 }
             }
             else {
@@ -435,7 +393,7 @@ foreach (explode('&', $curlResult) as $keyvalue) {
             </td>
         </tr>
         <script type="text/javascript">
-            var wd = new WirecardCEE_DataStorage();
+            var wd = new QentaCEE_DataStorage();
             wd.buildIframeCreditCard('creditcardDataIframe', '100%', '200px');
         </script>
         <tr>
@@ -492,7 +450,7 @@ foreach (explode('&', $curlResult) as $keyvalue) {
             </td>
         </tr>
         <script type="text/javascript">
-            var wd = new WirecardCEE_DataStorage();
+            var wd = new QentaCEE_DataStorage();
             wd.buildIframeCreditCardMoto('creditcardmotoDataIframe', '100%', '200px');
         </script>
         <tr>
@@ -500,63 +458,6 @@ foreach (explode('&', $curlResult) as $keyvalue) {
                 <i>The HTML containing the input fields for sensitive credit card data is hosted at QENTA.
                     Based on Javascript the consumer input is immediately sent to QENTA, validated and stored in the data storage,
                     therefore no button for storing this credit card data is required.</i>
-            </td>
-        </tr>
-    <?php } ?>
-    <tr>
-        <td colspan="2" align="center"><b>Maestro SecureCode</b></td>
-    </tr>
-    <?php if (!$PCI3_DSS_SAQ_A_ENABLE) { ?>
-        <tr>
-            <td align="right"><b>pan</b></td>
-            <td><input type="text" value="9600000000000005" id="maestro_pan"></td>
-        </tr>
-        <tr>
-            <td align="right"><b>expirationMonth</b></td>
-            <td><input type="text" value="12" id="maestro_expirationMonth"></td>
-        </tr>
-        <tr>
-            <td align="right"><b>expirationYear</b></td>
-            <td><input type="text" value="2031" id="maestro_expirationYear"></td>
-        </tr>
-        <tr>
-            <td align="right"><b>cardverifycode</b></td>
-            <td><input type="text" value="123" id="maestro_cardverifycode"></td>
-        </tr>
-        <tr>
-            <td align="right"><b>cardholdername</b></td>
-            <td><input type="text" value="Jane Doe" id="maestro_cardholdername"></td>
-        </tr>
-        <tr>
-            <td align="right"><b>issueMonth</b></td>
-            <td><input type="text" value="01" id="maestro_issueMonth"></td>
-        </tr>
-        <tr>
-            <td align="right"><b>issueYear</b></td>
-            <td><input type="text" value="2013" id="maestro_issueYear"></td>
-        </tr>
-        <tr>
-            <td align="right"><b>issueNumber</b></td>
-            <td><input type="text" value="1234" id="maestro_issueNumber"></td>
-        </tr>
-        <tr>
-            <td colspan="2" class="last" align="right"><input type="button" value="Store Maestro data" onclick="storeData('Maestro');"></td>
-        </tr>
-    <?php } else { ?>
-        <tr>
-            <td colspan="2">
-                <div id="maestroDataIframe"></div>
-            </td>
-        </tr>
-        <script type="text/javascript">
-            var wd = new WirecardCEE_DataStorage();
-            wd.buildIframeMaestro('maestroDataIframe', '100%', '200px');
-        </script>
-        <tr>
-            <td colspan="2">
-                <i>The HTML containing the input fields for sensitive maestro card data is hosted at QENTA.
-                    Based on Javascript the consumer input is immediately sent to QENTA, validated and stored in the data storage,
-                    therefore no button for storing this maestro card data is required.</i>
             </td>
         </tr>
     <?php } ?>
@@ -577,44 +478,6 @@ foreach (explode('&', $curlResult) as $keyvalue) {
     </tr>
     <tr>
         <td colspan="2" class="last" align="right"><input type="button" value="Store SEPA Direct Debit data" onclick="storeData('SEPA-DD');"></td>
-    </tr>
-    <tr>
-        <td colspan="2" align="center"><b>giropay</b></td>
-    </tr>
-    <tr>
-        <td align="right"><b>accountOwner</b></td>
-        <td><input type="text" value="Jane Doe" id="giropay_accountOwner"></td>
-    </tr>
-    <tr>
-        <td align="right"><b>bankAccount</b></td>
-        <td><input type="text" value="1234567890" id="giropay_bankAccount"></td>
-    </tr>
-    <tr>
-        <td align="right"><b>bankNumber</b></td>
-        <td><input type="text" value="99000001" id="giropay_bankNumber"></td>
-    </tr>
-    <tr>
-        <td colspan="2" class="last" align="right"><input type="button" value="Store giropay data" onclick="storeData('giropay');"></td>
-    </tr>
-    <tr>
-        <td colspan="2" align="center"><b>paybox</b></td>
-    </tr>
-    <tr>
-        <td align="right"><b>payerPayboxNumber</b></td>
-        <td><input type="text" value="0123456789" id="payerPayboxNumber"></td>
-    </tr>
-    <tr>
-        <td colspan="2" class="last" align="right"><input type="button" value="Store paybox data" onclick="storeData('paybox');"></td>
-    </tr>
-    <tr>
-        <td colspan="2" align="center"><b>Voucher</b></td>
-    </tr>
-    <tr>
-        <td align="right"><b>voucherId</b></td>
-        <td><input type="text" value="0123456789" id="voucherId"></td>
-    </tr>
-    <tr>
-        <td colspan="2" class="last" align="right"><input type="button" value="Store Voucher data" onclick="storeData('voucher');"></td>
     </tr>
 </table>
 

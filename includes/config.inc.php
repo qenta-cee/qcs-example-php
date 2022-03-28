@@ -8,34 +8,40 @@
  */
 
 
-// Please put this file in a folder where it is not possible to access it
-// from a web browser via your web server.
+/**
+ *  ALL CONFIGURATION SHOULD BE DONE IN .env
+ *  UPLOAD ALL FILES TO YOUR SERVER or USE NGROK
+ * 
+ *  START CONTAINER: docker-compose up; docker-compose down
+ *  OPEN http://your-servers-address:8000
+ * 
+ **/
 
 // customer id
 // e.g. D200001 for demonstration purposes only
 // for production mode, please use your personal customer id obtained by QENTA
-$customerId = getenv('QCS_CUSTOMER_ID') ?: "D200001";
+$customerId = getenv('QCS_CUSTOMER_ID') ?: 'D200001';
 
 // secret
 // pre-shared key, used to sign the transmitted data
 // e.g. B8AKTPWBRMNBV455FG6M2DANE99WU2 for testing purposes
 // for production mode, please use your personal secret obtained by QENTA
-$secret = getenv('QCS_SHOP_SECRET') ?: "B8AKTPWBRMNBV455FG6M2DANE99WU2";
+$secret = getenv('QCS_SHOP_SECRET') ?: 'B8AKTPWBRMNBV455FG6M2DANE99WU2';
 
 // shop id
 // please use this parameter only if it is enabled by QENTA
-$shopId = getenv('QCS_SHOP_ID') ?: "seamless";
+$shopId = getenv('QCS_SHOP_ID') ?: 'seamless';
 
 // session variable name for storing the id of the QENTA Data Storage
 $STORAGE_ID = "QENTA_dataStorageId";
 
 // URLs for accessing the QENTA Checkout Platform
-$URL_QENTA_CHECKOUT = getenv('QCS_ENDPOINT') ?: "https://api.qenta.com";
-$URL_DATASTORAGE_INIT = $URL_QENTA_CHECKOUT . "/qmore/dataStorage/init";
-$URL_DATASTORAGE_READ = $URL_QENTA_CHECKOUT . "/qmore/dataStorage/read";
-$URL_FRONTEND_INIT = $URL_QENTA_CHECKOUT . "/qmore/frontend/init";
-$QENTA_CHECKOUT_PORT = getenv('QCS_CHECKOUT_PORT') ?: 443;
-$QENTA_CHECKOUT_PROTOCOL = getenv('QCS_CHECKOUT_PROTO') ?: CURLPROTO_HTTPS;
+$URL_QENTA_CHECKOUT = (!empty(getenv('QCS_ENDPOINT')) ? getenv('QCS_ENDPOINT') : 'https://api.qenta.com');
+$URL_DATASTORAGE_INIT = $URL_QENTA_CHECKOUT.'/qmore/dataStorage/init';
+$URL_DATASTORAGE_READ = $URL_QENTA_CHECKOUT.'/qmore/dataStorage/read';
+$URL_FRONTEND_INIT = $URL_QENTA_CHECKOUT.'/qmore/frontend/init';
+$QENTA_CHECKOUT_PROTOCOL = parse_url($URL_QENTA_CHECKOUT, PHP_URL_SCHEME);
+$QENTA_CHECKOUT_PORT = getenv('QCS_CHECKOUT_PORT') ?: ('https' == $QENTA_CHECKOUT_PROTOCOL ? 443 : 80);
 
 // name of iFrame containing the checkout
 $CHECKOUT_WINDOW_NAME = "qenta_checkout";

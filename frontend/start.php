@@ -43,29 +43,17 @@ $_SESSION['currency'] = 'EUR';
         <tr>
             <td align="right"><b>Payment type:</b></td>
             <td>
-                <select name="paymentType" onchange="toggleFinancialInstitutions(this)">
-                    <option value="BANCONTACT_MISTERCASH">Bancontact/MisterCash</option>
+                <select name="paymentType" id="paymentType" onchange="toggleFinancialInstitutions(this)">
                     <option value="CCARD" selected>Credit Card</option>
                     <option value="CCARD-MOTO">Credit Card - Mail or Telephone Order</option>
-                    <option value="EKONTO">eKonto</option>
-                    <option value="SEPA-DD">SEPA Direct Debit</option>
-                    <option value="EPS">eps-Überweisung</option>
-                    <option value="GIROPAY">giropay</option>
-                    <option value="IDL">iDEAL</option>
+                    <option value="EPS">EPS-Überweisung</option>
                     <option value="INSTALLMENT">Installment</option>
                     <option value="INVOICE">Invoice</option>
-                    <option value="MAESTRO">Maestro SecureCode</option>
-                    <option value="MONETA">Moneta.ru</option>
                     <option value="PRZELEWY24">Przelewy24</option>
                     <option value="PAYPAL">PayPal</option>
-                    <option value="PBX">Paybox</option>
-                    <option value="POLI">POLi</option>
                     <option value="PSC">Paysafecard</option>
-                    <option value="QUICK">Quick</option>
-                    <option value="SKRILLWALLET">Skrill Digital Wallet</option>
-                    <option value="SOFORTUEBERWEISUNG">sofortueberweisung</option>
-                    <option value="TRUSTLY">Trustly</option>
-                    <option value="VOUCHER">Voucher</option>
+                    <option value="SEPA-DD">SEPA Direct Debit</option>
+                    <option value="SOFORTUEBERWEISUNG">Sofort Klarna</option>
                 </select>
             </td>
         </tr>
@@ -141,6 +129,14 @@ function toggleFinancialInstitutions(select) {
     }
 }
 </script>
+<?php
+if(isset($_GET['paymentType'])) { ?>
+<script>
+  document.getElementById('paymentType').value = "<?php echo $_GET['paymentType']; ?>";
+</script>
+<?php
+}
+?>
 </div>
 </body>
 </html>

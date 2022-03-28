@@ -1,23 +1,22 @@
-2021-01-25 16:42:59 The payment has been successfully completed.
+2022-03-28 13:15:24 The payment has been successfully completed.
 
 The QMore Checkout Seamless returned the following parameters:
 amount = 30
 currency = EUR
-paymentType = CCARD
-financialInstitution = MC
+paymentType = SEPA-DD
+financialInstitution = SEPA-DD
 language = en
-orderNumber = 5645979
+orderNumber = 15352243
 paymentState = SUCCESS
-authenticated = Yes
-anonymousPan = 0001
-expiry = 12/2031
-cardholder = Jane Doe
-maskedPan = 950000******0001
-gatewayReferenceNumber = DGW_5645979_RN
+mandateId = P000000001-101535224320220328151522
+mandateSignatureDate = 28.03.2022
+creditorId = AT94ZZZ00000001251
+dueDate = 30.03.2022
+gatewayReferenceNumber = DGW_15352243_RN
 gatewayContractNumber = DemoContractNumber123
 avsResponseCode = X
 avsResponseMessage = Demo AVS ResultMessage
 avsProviderResultCode = X
 avsProviderResultMessage = Demo AVS ProviderResultMessage
-responseFingerprintOrder = amount,currency,paymentType,financialInstitution,language,orderNumber,paymentState,authenticated,anonymousPan,expiry,cardholder,maskedPan,gatewayReferenceNumber,gatewayContractNumber,avsResponseCode,avsResponseMessage,avsProviderResultCode,avsProviderResultMessage,secret,responseFingerprintOrder
-responseFingerprint = e70bead45cdb6399a1ffffd11150c4e7e7b3d8946d58674613cbf7013f480bc6de3148caa2b14406f16c4147581902b86bc34fd86738e926495d07da3494c881
+responseFingerprintOrder = amount,currency,paymentType,financialInstitution,language,orderNumber,paymentState,mandateId,mandateSignatureDate,creditorId,dueDate,gatewayReferenceNumber,gatewayContractNumber,avsResponseCode,avsResponseMessage,avsProviderResultCode,avsProviderResultMessage,secret,responseFingerprintOrder
+responseFingerprint = 69bc43cd8754b5347aa854f8fc7e21c514782f31c63bf87b7b993fada13192e96790d3f54d3faacd6514308984d76a991894bd249d2ef29585ca6d772c48268c
