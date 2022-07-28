@@ -1,10 +1,22 @@
-2022-02-07 08:24:58 There occured an error during the payment transaction.
+2022-03-28 13:15:24 The payment has been successfully completed.
 
 The QMore Checkout Seamless returned the following parameters:
-error_1_errorCode = 15200
-error_1_message = INITIATION has an invalid length.
-error_1_consumerMessage = INITIATION has an invalid length.
-error_1_paySysMessage = Value QENGINE for parameter INITTYPE has invalid length.
-error_1_providerMessage = 
-errors = 1
-paymentState = FAILURE
+amount = 30
+currency = EUR
+paymentType = SEPA-DD
+financialInstitution = SEPA-DD
+language = en
+orderNumber = 15352243
+paymentState = SUCCESS
+mandateId = P000000001-101535224320220328151522
+mandateSignatureDate = 28.03.2022
+creditorId = AT94ZZZ00000001251
+dueDate = 30.03.2022
+gatewayReferenceNumber = DGW_15352243_RN
+gatewayContractNumber = DemoContractNumber123
+avsResponseCode = X
+avsResponseMessage = Demo AVS ResultMessage
+avsProviderResultCode = X
+avsProviderResultMessage = Demo AVS ProviderResultMessage
+responseFingerprintOrder = amount,currency,paymentType,financialInstitution,language,orderNumber,paymentState,mandateId,mandateSignatureDate,creditorId,dueDate,gatewayReferenceNumber,gatewayContractNumber,avsResponseCode,avsResponseMessage,avsProviderResultCode,avsProviderResultMessage,secret,responseFingerprintOrder
+responseFingerprint = 69bc43cd8754b5347aa854f8fc7e21c514782f31c63bf87b7b993fada13192e96790d3f54d3faacd6514308984d76a991894bd249d2ef29585ca6d772c48268c

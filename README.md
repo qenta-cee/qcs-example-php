@@ -7,26 +7,29 @@ An example implementation for QMore Checkout Seamless in PHP.
 
 This example demonstrates the integration principle of QMore Checkout Seamless and provides a basis for integration into PHP-based systems.
 
-
 ## Installation
 
+This example needs a webserver with PHP-support on an externally reachable address for confirmation deliveries.
+
+### Local installation
+Required: Docker _and_ [docker-compose](https://docs.docker.com/compose/install/)
+
+Recommended: [ngrok](https://ngrok.com)
+
+Start via docker-compose:
+
+`docker-compose up; docker-compose down`
+
+Run ngrok:
+
+`ngrok http 8000`
+
+### Server or VPS
 Copy the example code to a web server which supports PHP. Ensure that the web server is accessible from the Internet via port 80 (for http communication) or port 443 (for https communication). The web server needs a fully qualified domain name for receiving data from QENTA e.g. payment confirmations.
+
 
 Our [Online Guides](https://guides.qenta.com/ "Online Guides") provide an in depth description of [QMore Checkout Seamless](https://guides.qenta.com/wcs/start "QMore Checkout Seamless").
 
-
-## Security recommendation
-
-Please have a look at our recommendations regarding [Securing your online shop](https://guides.qenta.com/security/start "Securing your online shop").
-
-
-## Enabling JavaScript
-
-Please note that the QMore Checkout Seamless example only works if JavaScript is enabled, therefore you need to ensure that JavaScript is enabled. JavaScript might be disabled either on purpose or because the Internet Explorer security settings are set to HIGH or if browser extensions like Firefox NoScript or Chrome ScriptSafe are activated.
-
-Please also refer to our general information on [enabling JavaScript](https://guides.qenta.com/prerequisites#enabling_javascript "enabling JavaScript").
-
-
 ## Support and additional information
 
-If you have any questions or troubles to get this example up and running in your web server environment, please do not hesitate to contact our [support teams](https://guides.qenta.com/support "support teams").
+If you have any questions or troubles to get this example up and running in your web server environment, please do not hesitate to contact our [support teams](https://guides.qenta.com/contact "support teams").

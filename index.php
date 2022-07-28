@@ -159,26 +159,11 @@ foreach (explode('&', $curlResult) as $keyvalue) {
             var dataStorage = new QentaCEE_DataStorage();
             // initializes the JavaScript object containing the payment specific information and data
             var paymentInformation = {};
-            if (aPaymentType == "Maestro") {
-                if (!document.getElementById('maestro_pan')) {
-                    dataStorage.storeMaestroInformation(null, callbackFunction);
-                } else {
-                    paymentInformation.pan = document.getElementById('maestro_pan').value;
-                    paymentInformation.expirationMonth = document.getElementById('maestro_expirationMonth').value;
-                    paymentInformation.expirationYear = document.getElementById('maestro_expirationYear').value;
-                    paymentInformation.cardholdername = document.getElementById('maestro_cardholdername').value;
-                    paymentInformation.cardverifycode = document.getElementById('maestro_cardverifycode').value;
-                    paymentInformation.issueMonth = document.getElementById('maestro_issueMonth').value;
-                    paymentInformation.issueYear = document.getElementById('maestro_issueYear').value;
-                    paymentInformation.issueNumber = document.getElementById('maestro_issueNumber').value;
-                    // stores sensitive data to the QENTA Data Storage
-                    dataStorage.storeMaestroInformation(paymentInformation, callbackFunction);
-                }
-            }
             if (aPaymentType == "CreditCardMoto") {
                 if (!document.getElementById('cc_moto_pan')) {
                     dataStorage.storeCreditCardMotoInformation(null, callbackFunction);
                 } else {
+                    document.getElementById('iframeCO').src = document.getElementById('iframeCO').src.replace(/start.php.*/, 'start.php?paymentType=CCARD-MOTO');
                     paymentInformation.pan = document.getElementById('cc_moto_pan').value;
                     paymentInformation.expirationMonth = document.getElementById('cc_moto_expirationMonth').value;
                     paymentInformation.expirationYear = document.getElementById('cc_moto_expirationYear').value;
@@ -195,6 +180,7 @@ foreach (explode('&', $curlResult) as $keyvalue) {
                 if (!document.getElementById('cc_pan')) {
                     dataStorage.storeCreditCardInformation(null, callbackFunction);
                 } else {
+                    document.getElementById('iframeCO').src = document.getElementById('iframeCO').src.replace(/start.php.*/, 'start.php?paymentType=CCARD');
                     paymentInformation.pan = document.getElementById('cc_pan').value;
                     paymentInformation.expirationMonth = document.getElementById('cc_expirationMonth').value;
                     paymentInformation.expirationYear = document.getElementById('cc_expirationYear').value;
@@ -208,6 +194,7 @@ foreach (explode('&', $curlResult) as $keyvalue) {
                 }
             }
             if (aPaymentType == "SEPA-DD") {
+                document.getElementById('iframeCO').src = document.getElementById('iframeCO').src.replace(/start.php.*/, 'start.php?paymentType=SEPA-DD');
                 paymentInformation.bankBic = document.getElementById('sepa-dd_bankBic').value;
                 paymentInformation.bankAccountIban = document.getElementById('sepa-dd_bankAccountIban').value;
                 paymentInformation.accountOwner = document.getElementById('sepa-dd_accountOwner').value;
@@ -255,17 +242,6 @@ foreach (explode('&', $curlResult) as $keyvalue) {
                     s += "bankBic: " + info.bankBic + "\n";
                     s += "bankAccountIban: " + info.bankAccountIban + "\n";
                     s += "accountOwner: " + info.accountOwner + "\n";
-                }
-                if (paymentType == "paybox") {
-                    s += "payerPayboxNumber: " + info.payerPayboxNumber + "\n";
-                }
-                if (paymentType == "giropay") {
-                    s += "accountOwner: " + info.accountOwner + "\n";
-                    s += "bankAccount: " + info.bankAccount + "\n";
-                    s += "bankNumber: " + info.bankNumber + "\n";
-                }
-                if (paymentType == "voucher") {
-                    s += "voucherId: " + info.voucherId + "\n";
                 }
             }
             else {
@@ -551,44 +527,6 @@ foreach (explode('&', $curlResult) as $keyvalue) {
     </tr>
     <tr>
         <td colspan="2" class="last" align="right"><input type="button" value="Store SEPA Direct Debit data" onclick="storeData('SEPA-DD');"></td>
-    </tr>
-    <tr>
-        <td colspan="2" align="center"><b>giropay</b></td>
-    </tr>
-    <tr>
-        <td align="right"><b>accountOwner</b></td>
-        <td><input type="text" value="Jane Doe" id="giropay_accountOwner"></td>
-    </tr>
-    <tr>
-        <td align="right"><b>bankAccount</b></td>
-        <td><input type="text" value="1234567890" id="giropay_bankAccount"></td>
-    </tr>
-    <tr>
-        <td align="right"><b>bankNumber</b></td>
-        <td><input type="text" value="99000001" id="giropay_bankNumber"></td>
-    </tr>
-    <tr>
-        <td colspan="2" class="last" align="right"><input type="button" value="Store giropay data" onclick="storeData('giropay');"></td>
-    </tr>
-    <tr>
-        <td colspan="2" align="center"><b>paybox</b></td>
-    </tr>
-    <tr>
-        <td align="right"><b>payerPayboxNumber</b></td>
-        <td><input type="text" value="0123456789" id="payerPayboxNumber"></td>
-    </tr>
-    <tr>
-        <td colspan="2" class="last" align="right"><input type="button" value="Store paybox data" onclick="storeData('paybox');"></td>
-    </tr>
-    <tr>
-        <td colspan="2" align="center"><b>Voucher</b></td>
-    </tr>
-    <tr>
-        <td align="right"><b>voucherId</b></td>
-        <td><input type="text" value="0123456789" id="voucherId"></td>
-    </tr>
-    <tr>
-        <td colspan="2" class="last" align="right"><input type="button" value="Store Voucher data" onclick="storeData('voucher');"></td>
     </tr>
 </table>
 

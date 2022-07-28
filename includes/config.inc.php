@@ -8,8 +8,14 @@
  */
 
 
-// Please put this file in a folder where it is not possible to access it
-// from a web browser via your web server.
+/**
+ *  ALL CONFIGURATION SHOULD BE DONE IN .env
+ *  UPLOAD ALL FILES TO YOUR SERVER or USE NGROK
+ *
+ *  START CONTAINER: docker-compose up; docker-compose down
+ *  OPEN http://your-servers-address:8000
+ *
+ **/
 
 // customer id
 // e.g. D200001 for demonstration purposes only
@@ -63,4 +69,3 @@ $PCI3_DSS_SAQ_A_CCARD_SHOW_ISSUEDATE = false;
 $PCI3_DSS_SAQ_A_CCARD_SHOW_ISSUENUMBER = false;
 
 //--------------------------------------------------------------------------------//
-
