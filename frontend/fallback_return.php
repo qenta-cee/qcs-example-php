@@ -13,8 +13,8 @@ $response = isset($_POST['response']) ? $_POST['response'] : '';
 <head>
     <script type="text/javascript">
         function setResponse(response) {
-            if (typeof parent.WirecardCEE_Fallback_Request_Object == 'object') {
-                parent.WirecardCEE_Fallback_Request_Object.setResponseText(response);
+            if (typeof parent.QentaCEE_Fallback_Request_Object == 'object') {
+                parent.QentaCEE_Fallback_Request_Object.setResponseText(response);
                 console.log(response);
             }
             else {

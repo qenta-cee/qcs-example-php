@@ -34,7 +34,7 @@ $amount = $_SESSION['amount'];
 $currency = $_SESSION['currency'];
 $paymentType = isset($_POST['paymentType']) ? $_POST['paymentType'] : '';
 $financialInstitution = isset($_POST['financialInstitution'.$paymentType]) ? $_POST['financialInstitution'.$paymentType] : '';
-$orderDescription = 'Jane Doe (33562), Order: 5343643-034';
+$orderDescription = 'Test:0000';
 $successURL = $server_URL.'return_success.html';
 $cancelURL = $server_URL.'return_cancel.html';
 $failureURL = $server_URL.'return_failure.html';
@@ -216,7 +216,6 @@ $postFields .= '&customerStatement='.$customerStatement;
 // result returned from the QENTA Data Storage in a string for later use
 
 // closes the connection to the QENTA Checkout Platform
-
 $curlResult = IssueRequest($URL_FRONTEND_INIT, $postFields);
 
 //--------------------------------------------------------------------------------//

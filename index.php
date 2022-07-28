@@ -156,7 +156,7 @@ foreach (explode('&', $curlResult) as $keyvalue) {
             // sets the selected payment type where sensitive data should be stored
             paymentType = aPaymentType;
             // creates a new JavaScript object containing the QENTA Data Storage functionality
-            var dataStorage = new WirecardCEE_DataStorage();
+            var dataStorage = new QentaCEE_DataStorage();
             // initializes the JavaScript object containing the payment specific information and data
             var paymentInformation = {};
             if (aPaymentType == "Maestro") {
@@ -409,7 +409,7 @@ foreach (explode('&', $curlResult) as $keyvalue) {
             </td>
         </tr>
         <script type="text/javascript">
-            var wd = new WirecardCEE_DataStorage();
+            var wd = new QentaCEE_DataStorage();
             wd.buildIframeCreditCard('creditcardDataIframe', '100%', '200px');
         </script>
         <tr>
@@ -466,7 +466,7 @@ foreach (explode('&', $curlResult) as $keyvalue) {
             </td>
         </tr>
         <script type="text/javascript">
-            var wd = new WirecardCEE_DataStorage();
+            var wd = new QentaCEE_DataStorage();
             wd.buildIframeCreditCardMoto('creditcardmotoDataIframe', '100%', '200px');
         </script>
         <tr>
@@ -523,7 +523,7 @@ foreach (explode('&', $curlResult) as $keyvalue) {
             </td>
         </tr>
         <script type="text/javascript">
-            var wd = new WirecardCEE_DataStorage();
+            var wd = new QentaCEE_DataStorage();
             wd.buildIframeMaestro('maestroDataIframe', '100%', '200px');
         </script>
         <tr>
@@ -614,7 +614,7 @@ foreach (explode('&', $curlResult) as $keyvalue) {
     For testing purposes you can simulate the payment process within the demo mode.
 </p>
 
-<iframe id="iframeCO" src="frontend/start.php" name="<?php echo $CHECKOUT_WINDOW_NAME; ?>"></iframe>
+<iframe id="iframeCO" src="frontend/start.php" name="<?php echo $CHECKOUT_WINDOW_NAME; ?>" sandbox="allow-top-navigation allow-scripts allow-forms allow-popups allow-same-origin"></iframe>
 
 <h2 id="hStep5">Step 5: Handling the Confirmation</h2>
 

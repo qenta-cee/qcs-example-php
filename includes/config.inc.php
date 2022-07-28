@@ -48,7 +48,7 @@ $WEBSITE_URL = getBaseUrl();
 // true, to enable compliance to PCI3 DSS SAQ-A where the web page containing the
 // input fields for credit card data is delivered by QENTA and not via
 // the web server of the merchant
-$PCI3_DSS_SAQ_A_ENABLE = true;
+$PCI3_DSS_SAQ_A_ENABLE = false;
 
 // URL for style sheet to format the credit card input fields as delivered by QENTA
 // please be aware that @import, url() are ignored for security reasons

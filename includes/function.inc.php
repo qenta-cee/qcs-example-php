@@ -27,8 +27,8 @@ function getBaseUrl()
     return join('', $url);
 }
 
-function issueRequest($url, $fieldquery){
-
+function issueRequest($url, $fieldquery)
+{
     $options = array(
         'http' => array(
           'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
@@ -41,9 +41,8 @@ function issueRequest($url, $fieldquery){
         ),
       );
 
-      $context  = stream_context_create($options);
-      $result = file_get_contents($url, false, $context);
+    $context  = stream_context_create($options);
+    $result = file_get_contents($url, false, $context);
 
     return $result;
 }
-?>

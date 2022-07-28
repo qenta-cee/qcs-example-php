@@ -68,6 +68,12 @@ $_SESSION['currency'] = 'EUR';
                     <option value="AFTERPAY">Afterpay</option>
                     <option value="VOUCHER">Voucher</option>
                     <option value="CRYPTO">Crypto</option>
+                    <option value='CVSPHARMACY'>CVSPHARMACY</option>
+                    <option value='DOLLARGENERAL'>DOLLARGENERAL</option>
+                    <option value='CIRCLEK'>CIRCLEK</option>
+                    <option value='OPENBUCKSCARD'>OPENBUCKSCARD</option>
+                    <option value='PAGOEFECTIVO'>PAGOEFECTIVO</option>
+                    <option value='SAFETYPAY'>SAFETYPAY</option>
                 </select>
             </td>
         </tr>
