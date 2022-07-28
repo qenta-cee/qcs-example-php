@@ -4,7 +4,7 @@ services:
     container_name: qcs_example_php
     build: docker
     ports:
-      - "${QCS_EXAMPLE_PORT}:80"
+      - "8000:80"
       - "2443:443"
     volumes:
       - ./:/var/www/html/
