@@ -54,6 +54,14 @@ $_SESSION['currency'] = 'EUR';
                     <option value="PSC">Paysafecard</option>
                     <option value="SEPA-DD">SEPA Direct Debit</option>
                     <option value="SOFORTUEBERWEISUNG">Sofort Klarna</option>
+                    <option value="AFTERPAY">Afterpay</option>
+                    <option value="CRYPTO">Crypto</option>
+                    <option value='CVSPHARMACY'>CVSPHARMACY</option>
+                    <option value='DOLLARGENERAL'>DOLLARGENERAL</option>
+                    <option value='CIRCLEK'>CIRCLEK</option>
+                    <option value='OPENBUCKSCARD'>OPENBUCKSCARD</option>
+                    <option value='PAGOEFECTIVO'>PAGOEFECTIVO</option>
+                    <option value='SAFETYPAY'>SAFETYPAY</option>
                 </select>
             </td>
         </tr>
@@ -113,6 +121,15 @@ $_SESSION['currency'] = 'EUR';
                 </select>
             </td>
         </tr>
+        <tr id="financialInstitutionAFTERPAY" style="display: none;">
+            <td align="right"><b>Financial institution:</b></td>
+            <td>
+                <select name="financialInstitutionAFTERPAY">
+                    <option value="AFTERPAY-INST">Installment</option>
+                    <option value="AFTERPAY-INV">Invoice</option>
+                </select>
+            </td>
+        </tr>
         <tr>
             <td colspan="2" align="right"><input type="submit" value="Checkout"/></td>
         </tr>
@@ -122,15 +139,15 @@ $_SESSION['currency'] = 'EUR';
 function toggleFinancialInstitutions(select) {
     document.getElementById('financialInstitutionIDL').style.display = 'none';
     document.getElementById('financialInstitutionEPS').style.display = 'none';
-
+    document.getElementById('financialInstitutionAFTERPAY').style.display = 'none';
     var paymentType = select.options[select.selectedIndex].value;
-    if(paymentType == "IDL" || paymentType == "EPS") {
+    if(paymentType == "IDL" || paymentType == "EPS" || paymentType == "AFTERPAY") {
         document.getElementById('financialInstitution' + paymentType).style.display = 'table-row';
     }
 }
 </script>
 <?php
-if(isset($_GET['paymentType'])) { ?>
+if (isset($_GET['paymentType'])) { ?>
 <script>
   document.getElementById('paymentType').value = "<?php echo $_GET['paymentType']; ?>";
 </script>

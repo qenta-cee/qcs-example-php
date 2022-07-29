@@ -13,7 +13,7 @@ $response = isset($_POST['response']) ? $_POST['response'] : '';
 <head>
     <script type="text/javascript">
         function setResponse(response) {
-            if (typeof parentec.QentaCEE_Fallback_Request_Object == 'object') {
+            if (typeof parent.QentaCEE_Fallback_Request_Object == 'object') {
                 parent.QentaCEE_Fallback_Request_Object.setResponseText(response);
                 console.log(response);
             }
